@@ -7,7 +7,7 @@
   </head>
   <body>
     <div id="app">
-      <button v-on:click="getUsers">get users</button>
+      <button v-on:click="getData">get user</button>
       <div>{{ users }}</div>
     </div>
 
@@ -20,14 +20,19 @@
           users: [],
         },
         methods: {
-          getUsers: function () {
+          getData: function () {
+            // console.log(this);
             var vm = this;
             axios
               .get("https://jsonplaceholder.typicode.com/users/")
+              // 성공(promise 참고)
               .then(function (response) {
                 console.log(response.data);
+                // this.users = response.data;
+                // console.log(this);
                 vm.users = response.data;
               })
+              // 실패
               .catch(function (error) {
                 console.log(error);
               });
