@@ -31,11 +31,12 @@
 </template>
 
 <script>
+var appContent = {
+  props: ['propsdata']
+}
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  props: ['msg']
 }
 </script>
 
