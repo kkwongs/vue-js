@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Axios</title>
-  </head>
-  <body>
-    <div id="app">
-      <button v-on:click="getUsers">get users</button>
-      <div>{{ users }}</div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p v-bind:id="uuid" v-bind:class="name">{{ num }}</p>
+    <p>{{ doublenum }}</p>
+    <div v-if="loading">
+      Loading...
     </div>
+    <div v-else>
+      User have been logged in.
+    </div>
+    <div v-show="loading">
+      Loading...
+    </div>
+    <input v-model="message" placeholder="edit me">
+    <p>{{ message }}</p>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script>
-      new Vue({
-        el: "#app",
-        data: {
-          users: [],
-        },
-        methods: {
-          getUsers: function () {
-            var vm = this;
-            axios
-              .get("https://jsonplaceholder.typicode.com/users/")
-              .then(function (response) {
-                console.log(response.data);
-                vm.users = response.data;
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-          },
-        },
-      });
-    </script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        num: 10,
+        // doublenum: 10 * 2,
+        loading: true,
+        message: '',
+        uuid: 'abc1234',
+        name: 'text-red'
+      },
+      computed: {
+        doublenum: function() {
+          return this.num * 2
+        }
+      }
+    });
+  </script>
+</body>
 </html>
