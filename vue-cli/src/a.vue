@@ -1,0 +1,28 @@
+var appHeader = {
+  template: '<div>header</div>',
+  methods: {
+    addNum: function() {
+
+    }
+  }
+}
+
+<template>
+  <!-- HTMl -->
+  <div>header</div>
+</template>
+
+<script>
+export default {
+  // JavaScript
+  methods: {
+    addNum: function() {
+
+    }
+  }
+}
+</script>
+
+<style>
+  /* CSS */
+</style>
