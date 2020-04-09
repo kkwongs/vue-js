@@ -7,29 +7,31 @@
 </head>
 <body>
   <div id="app">
-    <button v-on:click="logText">click me</button>
-    <input type="text" v-on:keyup.enter="logText" v-model="message" v-on:keyup.delete="delText">
-    <button>add</button>
-    <p v-if="viewText">{{ message }}</p>
-    <p v-else></p>
+    {{ num }}
+    <button v-on:click="addNum">increase</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     new Vue({
       el: '#app',
-      methods: {
-        logText:function() {
-          this.viewText=true;
-          console.log('clicked');
-        },
-        delText: function() {
-          this.viewText=false;
-        }
-      },
       data: {
-        message: '',
-        viewText: false,
+        num: 10,
+      },
+      // data를 대상, data의 변화에 따라 특정 로직 실행
+      // watch: {
+      //   num: function() {
+      //     this.logText();
+      //   }
+      // },
+      methods: {
+        addNum: function() {
+          this.num += 1;
+          console.log('changed');
+        },
+        // logText: function() {
+        //   console.log('changed');
+        // }
       }
     })
   </script>
